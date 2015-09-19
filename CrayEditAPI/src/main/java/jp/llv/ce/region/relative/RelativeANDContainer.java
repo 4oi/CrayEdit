@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.regions.relative;
+package jp.llv.ce.region.relative;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -30,40 +30,38 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * 相対領域を複数格納し、一つの領域として扱う. Compositeパターン。 領域A,B,Cが与えられたとき、A-B-C...の領域として扱われる。
- * 初期化以降の領域単位での編集は不可
- *
+ * 相対領域を複数格納し、一つの領域として扱う. Compositeパターン。 領域A,B,C...が与えられたとき、A∩B∩C...の領域として扱われる。
+ * 初期化以降の領域単位での編集は不可。
+ * 
  * @author Toyblocks
  */
-public class RelativeNOTContainer extends RelativeRegion {
-
-    private final RelativeRegion union;
+public class RelativeANDContainer extends RelativeRegion {
+    
     private final Set<? extends RelativeRegion> contents;
 
-    public RelativeNOTContainer(RelativeRegion union, Collection<? extends RelativeRegion> contents) {
-        this.union = union;
+    public RelativeANDContainer(Collection<? extends RelativeRegion> contents) {
         this.contents = new LinkedHashSet<>(contents);
     }
 
-    public RelativeNOTContainer(RelativeRegion union, RelativeRegion... contents) {
-        this(union, Arrays.asList(contents));
+    public RelativeANDContainer(RelativeRegion... contents) {
+        this(Arrays.asList(contents));
     }
 
-    public RelativeRegion getUnion() {
-        return this.union;
-    }
-    
     public Set<RelativeRegion> getRegions() {
         return Collections.unmodifiableSet(contents);
     }
 
     @Override
     public Set<RelativePoint> toPoints() {
-        Set<RelativePoint> result = new LinkedHashSet<>(union.toPoints());
+        Set<RelativePoint> result = null;
         for (RelativeRegion r : contents) {
-            result.removeAll(r.toPoints());
+            if (result == null) {
+                result = new LinkedHashSet<>(r.toPoints());
+            } else {
+                result.retainAll(r.toPoints());
+            }
         }
-        return Collections.unmodifiableSet(result);
+        return  result == null ? Collections.EMPTY_SET : Collections.unmodifiableSet(result);
     }
-
+    
 }

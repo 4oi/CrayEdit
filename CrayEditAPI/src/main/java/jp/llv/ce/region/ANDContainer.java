@@ -28,8 +28,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import jp.llv.ce.regions.relative.RelativeANDContainer;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativeANDContainer;
+import jp.llv.ce.region.relative.RelativeRegion;
 
 /**
  * 領域を複数格納し、一つの領域として扱う. Compositeパターン。 領域A,B,C...が与えられたとき、A∩B∩C...の領域として扱われる。

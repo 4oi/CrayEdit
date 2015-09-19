@@ -1,4 +1,4 @@
-/* 
+/*
  * The MIT License
  *
  * Copyright 2015 Toyblocks.
@@ -21,43 +21,53 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.regions.relative;
+package jp.llv.ce.region.relative;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
+import jp.llv.ce.region.Cuboid;
+import jp.llv.ce.region.Point;
+import jp.llv.ce.region.Region;
 
 /**
- * 相対領域を複数格納し、一つの領域として扱う. Compositeパターン。 領域A,B,C...が与えられたとき、A∪B∪C...の領域として扱われる。
- * 初期化以降の領域単位での編集は不可
- * 
+ *
  * @author Toyblocks
  */
-public class RelativeORContainer extends RelativeRegion {
+public class RelativeCuboid extends RelativeRegion {
 
-    private final Set<? extends RelativeRegion> contents;
+    private final RelativePoint p1, p2;
 
-    public RelativeORContainer(Collection<? extends RelativeRegion> contents) {
-        this.contents = new LinkedHashSet<>(contents);
-    }
-
-    public RelativeORContainer(RelativeRegion... contents) {
-        this(Arrays.asList(contents));
+    public RelativeCuboid(RelativePoint p1, RelativePoint p2) {
+        this.p1 = p1;
+        this.p2 = p2;
     }
     
-    public Set<RelativeRegion> getRegions() {
-        return Collections.unmodifiableSet(contents);
+    @Override
+    public Set<RelativePoint> toPoints() {
+        boolean xf = p1.getX() < p2.getX(),
+                yf = p1.getY() < p2.getY(),
+                zf = p1.getZ() < p2.getZ();
+        Set<RelativePoint> result = new LinkedHashSet<>();
+        IntStream.rangeClosed(yf ? p1.getY() : p2.getY(), yf ? p2.getY() : p1.getY()).forEach(y -> {
+            IntStream.rangeClosed(xf ? p1.getX() : p2.getX(), xf ? p2.getX() : p1.getX()).forEach(x -> {
+                IntStream.rangeClosed(zf ? p1.getZ() : p2.getZ(), zf ? p2.getZ() : p1.getZ()).forEach(z -> {
+                    result.add(new RelativePoint(x, y, z));
+                });
+            });
+        });
+        return Collections.unmodifiableSet(result);
+    }
+    
+    @Override
+    public RelativeCuboid move(int x, int y, int z) {
+        return new RelativeCuboid(p1.move(x, y, z), p2.move(x, y, z));
     }
 
     @Override
-    public Set<RelativePoint> toPoints() {
-        Set<RelativePoint> result = new LinkedHashSet<>();
-        for (RelativeRegion r : contents) {
-            result.addAll(r.toPoints());
-        }
-        return Collections.unmodifiableSet(result);
+    public Region absolutize(Point origin) {
+        return new Cuboid(p1.absolutize(origin), p2.absolutize(origin));
     }
     
 }

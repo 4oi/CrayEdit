@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.regions.relative;
+package jp.llv.ce.region.relative;
 
 import java.util.Collections;
 import java.util.Set;

@@ -19,7 +19,6 @@ package jp.llv.ce.server.bukkit;
 import java.util.UUID;
 import jp.llv.ce.math.rcs.Point3d;
 import jp.llv.ce.server.EditPlayerCore;
-import jp.llv.ce.server.bukkit.BukkitPlayer;
 import jp.llv.ce.server.bukkit.util.PlayerUtil;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;

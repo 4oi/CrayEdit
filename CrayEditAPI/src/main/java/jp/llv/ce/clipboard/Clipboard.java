@@ -26,8 +26,8 @@ package jp.llv.ce.clipboard;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
-import jp.llv.ce.regions.relative.RelativePoint;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativePoint;
+import jp.llv.ce.region.relative.RelativeRegion;
 import jp.llv.ce.server.EditBlockData;
 
 /**

@@ -27,9 +27,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import jp.llv.ce.regions.relative.RelativePoint;
-import jp.llv.ce.regions.relative.RelativePointList;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativePoint;
+import jp.llv.ce.region.relative.RelativePointList;
+import jp.llv.ce.region.relative.RelativeRegion;
 
 /**
  *

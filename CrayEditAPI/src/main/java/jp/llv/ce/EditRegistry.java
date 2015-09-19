@@ -27,7 +27,7 @@ import jp.llv.ce.cmd.RootCommand;
 import jp.llv.ce.region.Region;
 import jp.llv.ce.region.function.AbsoluteRegionFunction;
 import jp.llv.ce.region.function.RelativeRegionFunction;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativeRegion;
 import jp.llv.ce.tool.ToolSupplier;
 
 /**

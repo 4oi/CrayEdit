@@ -25,7 +25,7 @@ package jp.llv.ce.region.owned;
 
 import java.util.Collection;
 import jp.llv.ce.region.Region;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativeRegion;
 
 /**
  *

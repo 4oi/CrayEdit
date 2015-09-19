@@ -26,7 +26,7 @@ package jp.llv.ce.region.function;
 import java.util.List;
 import jp.llv.ce.exception.CommandException;
 import jp.llv.ce.region.owned.OwnedRelativeRegion;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativeRegion;
 
 /**
  *

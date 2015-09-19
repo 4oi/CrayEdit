@@ -1,4 +1,4 @@
-/*
+/* 
  * The MIT License
  *
  * Copyright 2015 Toyblocks.
@@ -21,47 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.regions.relative;
+package jp.llv.ce.region.relative;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 import jp.llv.ce.region.Point;
-import jp.llv.ce.region.PointList;
 import jp.llv.ce.region.Region;
 
 /**
- *
+ * RelativezedRegion
  * @author Toyblocks
+ * @param <T> 変換元の領域クラス
  */
-public class RelativePointList extends RelativeRegion {
+public final class RelativizedRegion<T extends Region> extends RelativeRegion {
 
-    private final List<RelativePoint> points;
+    private final T absolute;
+    private final Point origin;
     
-    public RelativePointList(RelativePoint ... points) {
-        this.points = Collections.unmodifiableList(Arrays.asList(points));
-    }
-    
-    public RelativePointList(Collection<RelativePoint> points) {
-        this(points.toArray(new RelativePoint[points.size()]));
-    }
-    
-    @Override
-    public List<RelativePoint> toPoints() {
-        return this.points;
+    public RelativizedRegion(T absolute, Point origin) {
+        this.absolute = absolute;
+        this.origin = origin;
     }
 
     @Override
-    public Region absolutize(Point origin) {
-        return new PointList(
-                this.points.stream().map(r -> r.absolutize(origin)).toArray(Point[]::new)
-        );
-    }
-
-    @Override
-    public RelativeRegion aggregate() {
-        return this;
+    public Set<RelativePoint> toPoints() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

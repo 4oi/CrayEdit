@@ -30,7 +30,7 @@ import jp.llv.ce.math.NumUtil;
 import jp.llv.ce.math.rcs.Point3d;
 import jp.llv.ce.math.rcs.UnitVector;
 import jp.llv.ce.math.rcs.Vector;
-import jp.llv.ce.regions.relative.RelativePoint;
+import jp.llv.ce.region.relative.RelativePoint;
 
 /**
  * 絶対的一点を示す領域. イミュータブル

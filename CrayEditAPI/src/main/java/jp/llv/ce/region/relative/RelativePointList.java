@@ -21,53 +21,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.regions.relative;
+package jp.llv.ce.region.relative;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import java.util.stream.IntStream;
-import jp.llv.ce.region.Cuboid;
+import java.util.List;
 import jp.llv.ce.region.Point;
+import jp.llv.ce.region.PointList;
 import jp.llv.ce.region.Region;
 
 /**
  *
  * @author Toyblocks
  */
-public class RelativeCuboid extends RelativeRegion {
+public class RelativePointList extends RelativeRegion {
 
-    private final RelativePoint p1, p2;
-
-    public RelativeCuboid(RelativePoint p1, RelativePoint p2) {
-        this.p1 = p1;
-        this.p2 = p2;
+    private final List<RelativePoint> points;
+    
+    public RelativePointList(RelativePoint ... points) {
+        this.points = Collections.unmodifiableList(Arrays.asList(points));
+    }
+    
+    public RelativePointList(Collection<RelativePoint> points) {
+        this(points.toArray(new RelativePoint[points.size()]));
     }
     
     @Override
-    public Set<RelativePoint> toPoints() {
-        boolean xf = p1.getX() < p2.getX(),
-                yf = p1.getY() < p2.getY(),
-                zf = p1.getZ() < p2.getZ();
-        Set<RelativePoint> result = new LinkedHashSet<>();
-        IntStream.rangeClosed(yf ? p1.getY() : p2.getY(), yf ? p2.getY() : p1.getY()).forEach(y -> {
-            IntStream.rangeClosed(xf ? p1.getX() : p2.getX(), xf ? p2.getX() : p1.getX()).forEach(x -> {
-                IntStream.rangeClosed(zf ? p1.getZ() : p2.getZ(), zf ? p2.getZ() : p1.getZ()).forEach(z -> {
-                    result.add(new RelativePoint(x, y, z));
-                });
-            });
-        });
-        return Collections.unmodifiableSet(result);
-    }
-    
-    @Override
-    public RelativeCuboid move(int x, int y, int z) {
-        return new RelativeCuboid(p1.move(x, y, z), p2.move(x, y, z));
+    public List<RelativePoint> toPoints() {
+        return this.points;
     }
 
     @Override
     public Region absolutize(Point origin) {
-        return new Cuboid(p1.absolutize(origin), p2.absolutize(origin));
+        return new PointList(
+                this.points.stream().map(r -> r.absolutize(origin)).toArray(Point[]::new)
+        );
+    }
+
+    @Override
+    public RelativeRegion aggregate() {
+        return this;
     }
     
 }

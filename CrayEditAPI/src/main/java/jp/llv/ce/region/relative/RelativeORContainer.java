@@ -21,30 +21,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.regions.relative;
+package jp.llv.ce.region.relative;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.Set;
-import jp.llv.ce.region.Point;
-import jp.llv.ce.region.Region;
 
 /**
- * RelativezedRegion
+ * 相対領域を複数格納し、一つの領域として扱う. Compositeパターン。 領域A,B,C...が与えられたとき、A∪B∪C...の領域として扱われる。
+ * 初期化以降の領域単位での編集は不可
+ * 
  * @author Toyblocks
- * @param <T> 変換元の領域クラス
  */
-public final class RelativizedRegion<T extends Region> extends RelativeRegion {
+public class RelativeORContainer extends RelativeRegion {
 
-    private final T absolute;
-    private final Point origin;
+    private final Set<? extends RelativeRegion> contents;
+
+    public RelativeORContainer(Collection<? extends RelativeRegion> contents) {
+        this.contents = new LinkedHashSet<>(contents);
+    }
+
+    public RelativeORContainer(RelativeRegion... contents) {
+        this(Arrays.asList(contents));
+    }
     
-    public RelativizedRegion(T absolute, Point origin) {
-        this.absolute = absolute;
-        this.origin = origin;
+    public Set<RelativeRegion> getRegions() {
+        return Collections.unmodifiableSet(contents);
     }
 
     @Override
     public Set<RelativePoint> toPoints() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Set<RelativePoint> result = new LinkedHashSet<>();
+        for (RelativeRegion r : contents) {
+            result.addAll(r.toPoints());
+        }
+        return Collections.unmodifiableSet(result);
     }
     
 }

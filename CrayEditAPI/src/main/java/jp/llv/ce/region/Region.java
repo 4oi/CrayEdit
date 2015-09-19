@@ -28,8 +28,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import jp.llv.ce.regions.relative.RelativeORContainer;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativeORContainer;
+import jp.llv.ce.region.relative.RelativeRegion;
 
 /**
  * 絶対領域. 絶対座標に依存する領域であり、他意はない!

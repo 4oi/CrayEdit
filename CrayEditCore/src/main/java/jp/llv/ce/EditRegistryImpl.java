@@ -27,14 +27,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Pattern;
-import jp.llv.ce.EditRegistry;
 import jp.llv.ce.cmd.*;
 import jp.llv.ce.cmd.internal.*;
 import jp.llv.ce.region.Region;
 import jp.llv.ce.region.function.*;
 import jp.llv.ce.region.owned.OwnedAbsoluteRegion;
 import jp.llv.ce.region.owned.RegionOwner;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativeRegion;
 import jp.llv.ce.tool.ToolSupplier;
 
 /**

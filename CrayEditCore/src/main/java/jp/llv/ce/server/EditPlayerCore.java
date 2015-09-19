@@ -30,8 +30,7 @@ import jp.llv.ce.region.Region;
 import jp.llv.ce.region.owned.OwnedAbsoluteRegion;
 import jp.llv.ce.region.owned.OwnedRegion;
 import jp.llv.ce.region.owned.OwnedRelativeRegion;
-import jp.llv.ce.regions.relative.RelativeRegion;
-import jp.llv.ce.server.EditPlayer;
+import jp.llv.ce.region.relative.RelativeRegion;
 
 /**
  *
@@ -71,7 +70,7 @@ public abstract class EditPlayerCore implements EditPlayer {
     }
 
     @Override
-    public OwnedAbsoluteRegion<Region> addRegion(Region region) {
+    public <R extends Region> OwnedAbsoluteRegion<R> addRegion(R region) {
         if (region == null) {
             throw new NullPointerException();
         }
@@ -83,7 +82,7 @@ public abstract class EditPlayerCore implements EditPlayer {
     }
 
     @Override
-    public OwnedRelativeRegion<RelativeRegion> addRegion(RelativeRegion region) {
+    public <R extends RelativeRegion> OwnedRelativeRegion<R> addRegion(R region) {
         if (region == null) {
             throw new NullPointerException();
         }

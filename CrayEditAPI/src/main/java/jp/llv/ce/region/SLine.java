@@ -28,8 +28,8 @@ import java.util.HashSet;
 import java.util.Set;
 import jp.llv.ce.math.rcs.Line;
 import jp.llv.ce.math.rcs.Point3d;
-import jp.llv.ce.regions.relative.RelativeRegion;
-import jp.llv.ce.regions.relative.RelativeSLine;
+import jp.llv.ce.region.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativeSLine;
 import jp.llv.ce.math.rcs.Vector;
 
 /**

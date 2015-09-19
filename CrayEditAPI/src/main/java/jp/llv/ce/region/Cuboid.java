@@ -28,7 +28,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
-import jp.llv.ce.regions.relative.RelativeCuboid;
+import jp.llv.ce.region.relative.RelativeCuboid;
 
 /**
  *

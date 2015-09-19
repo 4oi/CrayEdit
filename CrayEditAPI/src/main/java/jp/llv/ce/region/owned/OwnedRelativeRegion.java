@@ -26,7 +26,7 @@ package jp.llv.ce.region.owned;
 import jp.llv.ce.math.rcs.Point3d;
 import jp.llv.ce.region.Point;
 import jp.llv.ce.region.Region;
-import jp.llv.ce.regions.relative.RelativeRegion;
+import jp.llv.ce.region.relative.RelativeRegion;
 import jp.llv.ce.server.EditPlayer;
 
 /**
