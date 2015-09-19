@@ -1,0 +1,16 @@
+#Netbeans-SystemFiles
+target/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+
+#Java compiled code
+*.class
+*.jar
+*war
+*ear

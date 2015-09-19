@@ -1,0 +1,9 @@
+name: UnfixEdit
+version: 1.0.0-SNAPSHOT
+description: Creative API aimed at world-editing
+author: toyblocks
+
+main: jp.llv.ce.UnfixEditBukkit
+
+commands:
+# ||: dynamic registration :|| #
