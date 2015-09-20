@@ -1,9 +1,9 @@
-name: UnfixEdit
+name: CrayEdit
 version: 1.0.0-SNAPSHOT
 description: Creative API aimed at world-editing
 author: toyblocks
 
-main: jp.llv.ce.UnfixEditBukkit
+main: jp.llv.ce.CrayEditBukkit
 
 commands:
 # ||: dynamic registration :|| #

@@ -1,0 +1,9 @@
+name: CrayEdit-Base
+version: 1.0.0-SNAPSHOT
+description: Basic stuffs for CrayEdit
+author: toyblocks
+
+main: jp.llv.ce.base.CrayEditBaseBukkit
+
+commands:
+# ||: dynamic registration :|| #
