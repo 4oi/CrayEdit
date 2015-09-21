@@ -34,15 +34,15 @@ import jp.llv.ce.server.EditPlayer;
 @EditEvent
 public abstract class PlayerClickEvent extends PlayerEvent implements Cancellable {
 
-    private boolean cancel = false;
+    private volatile boolean cancel = false;
     
     public PlayerClickEvent(EditPlayer player) {
         super(player);
     }
 
     @Override
-    public void setCancelled(boolean cancel) {
-        this.cancel = cancel;
+    public void cancel() {
+        this.cancel = true;
     }
 
     @Override

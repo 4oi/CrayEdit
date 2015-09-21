@@ -35,15 +35,15 @@ import jp.llv.ce.server.EditPlayer;
 @EditEvent
 public class PlayerBlockBreakEvent extends PlayerBlockEvent implements Cancellable {
 
-    private boolean cancel;
+    private volatile boolean cancel;
     
     public PlayerBlockBreakEvent(EditPlayer player, EditBlock block) {
         super(player, block);
     }
 
     @Override
-    public void setCancelled(boolean cancel) {
-        this.cancel = cancel;
+    public void cancel() {
+        this.cancel = true;
     }
 
     @Override

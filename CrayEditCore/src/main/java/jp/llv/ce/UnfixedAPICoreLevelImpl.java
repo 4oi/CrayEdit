@@ -23,9 +23,9 @@
  */
 package jp.llv.ce;
 
+import java.util.function.Consumer;
 import java.util.logging.Level;
-import jp.llv.ce.EditRegistry;
-import jp.llv.ce.UnfixedAPI;
+import jp.llv.ce.event.EventExecutor;
 
 /**
  * API実装
@@ -34,6 +34,8 @@ import jp.llv.ce.UnfixedAPI;
 public abstract class UnfixedAPICoreLevelImpl implements UnfixedAPI {
 
     private static final String VERSION = "1.0.0";
+
+    private final EventExecutor eventExecutor = new EventExecutor();
     
     private boolean debug = false;
     private final EditRegistry registry;
@@ -50,6 +52,21 @@ public abstract class UnfixedAPICoreLevelImpl implements UnfixedAPI {
     @Override
     public EditRegistry getRegistry() {
         return this.registry;
+    }
+
+    @Override
+    public <E> void registerListener(Object registrar, Class<? extends E> event, Consumer<E> listener) {
+        this.eventExecutor.register(registrar, event, listener);
+    }
+    
+    @Override
+    public void unregisterListener(Object registrar) {
+        this.eventExecutor.unregisterAll(registrar);
+    }
+    
+    @Override
+    public void callEvent(Object event) {
+        this.eventExecutor.callEvent(event);
     }
 
     @Override

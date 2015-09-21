@@ -30,11 +30,7 @@ package jp.llv.ce.event;
 @EditEvent
 public interface Cancellable {
 
-    default void cancel() {
-        this.setCancelled(true);
-    }
-    
-    void setCancelled(boolean cancel);
+    void cancel();
 
     boolean isCancelled();
     

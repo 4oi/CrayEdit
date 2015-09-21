@@ -46,7 +46,9 @@ public interface UnfixedAPI {
 
     EditRegistry getRegistry();
 
-    <E> void addListener(Object registrant, Class<? extends E> event, Consumer<E> listener);
+    <E> void registerListener(Object registrar, Class<? extends E> event, Consumer<E> listener);
+    
+    void unregisterListener(Object registrar);
     
     void callEvent(Object event);
     
@@ -56,10 +58,14 @@ public interface UnfixedAPI {
 
     void debug(String message, Throwable ex);
 
-    static class Container {
+    static final class Container {
 
         private static UnfixedAPI api;
 
+        private Container() {
+            throw new RuntimeException();
+        }
+        
         protected static void init(UnfixedAPI implementation) {
             if (api != null) {
                 throw new IllegalStateException("API is already ready");

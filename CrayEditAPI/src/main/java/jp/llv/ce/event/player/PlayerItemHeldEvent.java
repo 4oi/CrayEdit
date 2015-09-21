@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 toyblocks.
+ * Copyright 2015 Toyblocks.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,20 +25,20 @@ package jp.llv.ce.event.player;
 
 import jp.llv.ce.event.Cancellable;
 import jp.llv.ce.event.EditEvent;
-import jp.llv.ce.server.EditBlock;
+import jp.llv.ce.server.EditItem;
 import jp.llv.ce.server.EditPlayer;
 
 /**
  *
- * @author toyblocks
+ * @author Toyblocks
  */
 @EditEvent
-public class PlayerBlockPlaceEvent extends PlayerBlockEvent implements Cancellable {
+public class PlayerItemHeldEvent extends PlayerItemEvent implements Cancellable {
 
-    private volatile boolean cancel;
+    private volatile boolean cancel = false;
     
-    public PlayerBlockPlaceEvent(EditPlayer player, EditBlock block) {
-        super(player, block);
+    public PlayerItemHeldEvent(EditPlayer player, EditItem item) {
+        super(player, item);
     }
 
     @Override

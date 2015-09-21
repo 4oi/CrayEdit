@@ -44,7 +44,7 @@ public class EditRegistryImpl implements EditRegistry {
 
     private static final Pattern TOOL_NAME_PATTERN = Pattern.compile("^\\w+$");
     private static final Pattern FUNCTION_NAME_PATTERN = Pattern.compile("^[a-zA-Z_]\\w*$");
-
+    
     private final Map<String, ToolSupplier> toolRegistry = new HashMap<>();
     private final Map<Class<?>, Map<String, AbsoluteRegionFunction<?>>> absoluteRegionFunctionRegistry = new HashMap<>();
     private final Map<Class<?>, Map<String, RelativeRegionFunction<?>>> relativeRegionFunctionRegistry = new HashMap<>();
@@ -63,7 +63,8 @@ public class EditRegistryImpl implements EditRegistry {
         return this.command;
     }
 
-    public void register(ToolSupplier<?> tool, String...names) {
+    @Override
+    public void register(Object registrant, ToolSupplier<?> tool, String...names) {
         if (tool == null || names == null) {
             throw new NullPointerException();
         }
@@ -75,7 +76,8 @@ public class EditRegistryImpl implements EditRegistry {
         }
     }
     
-    public <R extends Region> void register(Class<? extends R> clazz, AbsoluteRegionFunction<R> func, String... names) {
+    @Override
+    public <R extends Region> void register(Object registrant, Class<? extends R> clazz, AbsoluteRegionFunction<R> func, String... names) {
         if (clazz == null || func == null || names == null) {
             throw new NullPointerException();
         }
@@ -91,7 +93,8 @@ public class EditRegistryImpl implements EditRegistry {
         }
     }
 
-    public <R extends RelativeRegion> void register(Class<? extends R> clazz, RelativeRegionFunction<R> func, String... names) {
+    @Override
+    public <R extends RelativeRegion> void register(Object registrant, Class<? extends R> clazz, RelativeRegionFunction<R> func, String... names) {
         if (clazz == null || func == null || names == null) {
             throw new NullPointerException();
         }
