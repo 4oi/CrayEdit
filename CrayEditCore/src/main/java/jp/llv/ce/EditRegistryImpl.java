@@ -52,7 +52,7 @@ public class EditRegistryImpl implements EditRegistry {
 
     public EditRegistryImpl() {
         this.command = new RootCommand(
-                new ParentCommand("unfixedit", new String[]{"ue"},
+                new ParentCommand("Crayit", new String[]{"ue"},
                         new VersionCommand(),
                         new EmptyCommand()
                 ));

@@ -24,7 +24,7 @@
 package jp.llv.ce.cmd.internal;
 
 import java.util.List;
-import static jp.llv.ce.UnfixedAPI.Container.getAPI;
+import static jp.llv.ce.CrayAPI.Container.getAPI;
 import jp.llv.ce.cmd.Aliases;
 import jp.llv.ce.cmd.BaseCommand;
 import jp.llv.ce.exception.CommandException;

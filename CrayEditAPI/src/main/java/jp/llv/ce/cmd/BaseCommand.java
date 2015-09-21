@@ -28,7 +28,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
-import jp.llv.ce.UnfixedAPI;
+import jp.llv.ce.CrayAPI;
 import jp.llv.ce.Msg;
 import jp.llv.ce.server.EditCommandSender;
 import net.md_5.bungee.api.ChatColor;
@@ -114,7 +114,7 @@ public abstract class BaseCommand implements Completable {
         } catch (CommandException ex) {
             sender.sendMessage(ex.getMessage());
         } catch (Exception ex) {
-            UnfixedAPI.Container.getAPI().debug("Internal command error", ex);
+            CrayAPI.Container.getAPI().debug("Internal command error", ex);
             Msg.fromKey("err.cmd.internal").sendTo(sender);
         }
     }
@@ -134,7 +134,7 @@ public abstract class BaseCommand implements Completable {
             List<String> result = this.preComplete(caller, sender, args);
             return result != null ? result : Collections.EMPTY_LIST;
         } catch (Exception ex) {
-            UnfixedAPI.Container.getAPI().debug("Internal command complete error", ex);
+            CrayAPI.Container.getAPI().debug("Internal command complete error", ex);
             return Collections.EMPTY_LIST;
         }
     }

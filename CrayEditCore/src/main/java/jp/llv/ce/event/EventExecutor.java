@@ -30,7 +30,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import jp.llv.ce.UnfixedAPI;
+import jp.llv.ce.CrayAPI;
 
 /**
  *
@@ -77,7 +77,7 @@ public class EventExecutor {
             } catch (Throwable ex) {
                 int id = System.identityHashCode(c.consumer);
                 String o = c.registrar.toString();
-                UnfixedAPI.Container.getAPI().debug("An error has ocurred by a listener#" + id + " handling " + event.getClass().getSimpleName() + " by " + o, ex);
+                CrayAPI.Container.getAPI().debug("An error has ocurred by a listener#" + id + " handling " + event.getClass().getSimpleName() + " by " + o, ex);
             }
         });
     }

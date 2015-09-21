@@ -16,9 +16,6 @@
  */
 package jp.llv.ce;
 
-import jp.llv.ce.Msg;
-import jp.llv.ce.UnfixedAPI;
-import jp.llv.ce.UnfixedBukkitAPI;
 import jp.llv.ce.listener.CommandListener;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,9 +24,9 @@ import org.bukkit.plugin.java.JavaPlugin;
  *
  * @author Toyblocks
  */
-public class UnfixEditBukkit extends JavaPlugin {
+public class CrayEditBukkit extends JavaPlugin {
 
-    private UnfixedAPIBukkitImpl api;
+    private CrayAPIBukkitImpl api;
     
     @Override
     public void onEnable() {
@@ -37,9 +34,9 @@ public class UnfixEditBukkit extends JavaPlugin {
         Msg.init(null);
         
         //init api
-        this.api = new UnfixedAPIBukkitImpl(this);
-        UnfixedAPI.Container.init(api);
-        this.getServer().getServicesManager().register(UnfixedBukkitAPI.class, api, this, ServicePriority.Highest);
+        this.api = new CrayAPIBukkitImpl(this);
+        CrayAPI.Container.init(api);
+        this.getServer().getServicesManager().register(CrayBukkitAPI.class, api, this, ServicePriority.Highest);
         
         //init listeners
         this.getServer().getPluginManager().registerEvents(new CommandListener(this, this.api.getRegistry().getCommand()), this);

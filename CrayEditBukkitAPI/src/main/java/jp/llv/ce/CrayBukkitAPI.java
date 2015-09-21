@@ -16,14 +16,13 @@
  */
 package jp.llv.ce;
 
-import jp.llv.ce.UnfixedAPI;
 import jp.llv.ce.server.bukkit.BukkitServer;
 
 /**
  *
  * @author Toyblocks
  */
-public interface UnfixedBukkitAPI extends UnfixedAPI{
+public interface CrayBukkitAPI extends CrayAPI{
 
     @Override
     public BukkitServer getServer();

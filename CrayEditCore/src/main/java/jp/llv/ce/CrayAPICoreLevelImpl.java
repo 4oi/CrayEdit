@@ -31,7 +31,7 @@ import jp.llv.ce.event.EventExecutor;
  * API実装
  * @author Toyblocks
  */
-public abstract class UnfixedAPICoreLevelImpl implements UnfixedAPI {
+public abstract class CrayAPICoreLevelImpl implements CrayAPI {
 
     private static final String VERSION = "1.0.0";
 
@@ -40,7 +40,7 @@ public abstract class UnfixedAPICoreLevelImpl implements UnfixedAPI {
     private boolean debug = false;
     private final EditRegistry registry;
     
-    /*package*/ UnfixedAPICoreLevelImpl() {
+    /*package*/ CrayAPICoreLevelImpl() {
         this.registry = new EditRegistryImpl();
     }
 

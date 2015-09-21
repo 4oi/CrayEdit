@@ -21,7 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import jp.llv.ce.UnfixEditBukkit;
+import jp.llv.ce.CrayEditBukkit;
 import jp.llv.ce.cmd.RootCommand;
 import jp.llv.ce.server.bukkit.BukkitCommandSenderImpl;
 import jp.llv.ce.server.bukkit.BukkitPlayerImpl;
@@ -39,11 +39,11 @@ import org.bukkit.event.server.ServerCommandEvent;
  */
 public class CommandListener implements Listener {
 
-    private final UnfixEditBukkit plugin;
+    private final CrayEditBukkit plugin;
     private final Pattern commandPattern = Pattern.compile("^/?:(.*)$");
     private final RootCommand commandHandler;
 
-    public CommandListener(UnfixEditBukkit plugin, RootCommand command) {
+    public CommandListener(CrayEditBukkit plugin, RootCommand command) {
         if (command == null) {
             throw new NullPointerException();
         }

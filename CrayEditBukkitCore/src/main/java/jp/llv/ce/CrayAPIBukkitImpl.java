@@ -17,20 +17,18 @@
 package jp.llv.ce;
 
 import java.util.logging.Logger;
-import jp.llv.ce.UnfixedAPICoreLevelImpl;
-import jp.llv.ce.UnfixedBukkitAPI;
 import jp.llv.ce.server.bukkit.BukkitServerImpl;
 
 /**
  *
  * @author Toyblocks
  */
-public final class UnfixedAPIBukkitImpl extends UnfixedAPICoreLevelImpl implements UnfixedBukkitAPI {
+public final class CrayAPIBukkitImpl extends CrayAPICoreLevelImpl implements CrayBukkitAPI {
 
-    private final UnfixEditBukkit plugin;
+    private final CrayEditBukkit plugin;
     private final BukkitServerImpl server;
 
-    public UnfixedAPIBukkitImpl(UnfixEditBukkit plugin) {
+    public CrayAPIBukkitImpl(CrayEditBukkit plugin) {
         this.plugin = plugin;
         this.server = new BukkitServerImpl(plugin.getServer());
     }

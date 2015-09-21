@@ -32,7 +32,7 @@ import jp.llv.ce.server.EditServer;
  *
  * @author Toyblocks
  */
-public interface UnfixedAPI {
+public interface CrayAPI {
 
     static final String API_VERSION = "1.0";
 
@@ -60,20 +60,20 @@ public interface UnfixedAPI {
 
     static final class Container {
 
-        private static UnfixedAPI api;
+        private static CrayAPI api;
 
         private Container() {
             throw new RuntimeException();
         }
         
-        protected static void init(UnfixedAPI implementation) {
+        protected static void init(CrayAPI implementation) {
             if (api != null) {
                 throw new IllegalStateException("API is already ready");
             }
             api = implementation;
         }
 
-        public static UnfixedAPI getAPI() {
+        public static CrayAPI getAPI() {
             if (api == null) {
                 throw new IllegalStateException("API is not ready");
             }
