@@ -36,13 +36,11 @@ import jp.llv.ce.tool.ToolSupplier;
  */
 public interface EditRegistry {
     
-    void register(ToolSupplier<?> tool, String...names);
+    void register(Object registrant, ToolSupplier<?> tool, String...names);
     
-    <R extends Region> void register(Class<? extends R> clazz, AbsoluteRegionFunction<R> func, String... names);
+    <R extends Region> void register(Object registrant, Class<? extends R> clazz, AbsoluteRegionFunction<R> func, String... names);
     
-    <R extends RelativeRegion> void register(Class<? extends R> clazz, RelativeRegionFunction<R> func, String... names);
-    
-    
+    <R extends RelativeRegion> void register(Object registrant, Class<? extends R> clazz, RelativeRegionFunction<R> func, String... names);
     
     RootCommand getCommand();
     

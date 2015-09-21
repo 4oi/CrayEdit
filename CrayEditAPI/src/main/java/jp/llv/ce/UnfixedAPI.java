@@ -23,6 +23,7 @@
  */
 package jp.llv.ce;
 
+import java.util.function.Consumer;
 import java.util.logging.Logger;
 import jp.llv.ce.server.EditServer;
 
@@ -45,6 +46,10 @@ public interface UnfixedAPI {
 
     EditRegistry getRegistry();
 
+    <E> void addListener(Object registrant, Class<? extends E> event, Consumer<E> listener);
+    
+    void callEvent(Object event);
+    
     Logger getLogger();
 
     void debug(String message);
