@@ -23,16 +23,20 @@
  */
 package jp.llv.ce.server;
 
-import jp.llv.ce.region.Point;
+import java.util.Map;
 
 /**
  *
  * @author Toyblocks
  */
-public interface EditBlock {
+public interface EditItemData {
     
-    EditItemData getData();
+    String getID();
     
-    Point getLocation();
+    EditMaterial getMaterial();
+    
+    byte getData();
+    
+    Map getTag();
     
 }

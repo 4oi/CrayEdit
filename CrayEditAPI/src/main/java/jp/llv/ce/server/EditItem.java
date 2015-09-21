@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Toyblocks.
+ * Copyright 2015 toyblocks.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,24 @@
  */
 package jp.llv.ce.server;
 
-import jp.llv.ce.region.Point;
-
 /**
  *
- * @author Toyblocks
+ * @author toyblocks
  */
-public interface EditBlock {
+public interface EditItem {
     
     EditItemData getData();
     
-    Point getLocation();
+    int getAmount();
+    
+    void setAmount(int amount);
+    
+    String getName();
+    
+    void setName(String name);
+    
+    String[] getLore();
+    
+    void setLore(String...lore);
     
 }

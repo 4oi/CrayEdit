@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Toyblocks.
+ * Copyright 2015 toyblocks.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,18 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.server;
-
-import jp.llv.ce.region.Point;
+package jp.llv.ce.event;
 
 /**
  *
- * @author Toyblocks
+ * @author toyblocks
  */
-public interface EditBlock {
+@EditEvent
+public interface Cancellable {
+
+    default void cancel() {
+        this.setCancelled(true);
+    }
     
-    EditItemData getData();
-    
-    Point getLocation();
+    void setCancelled(boolean cancel);
+
+    boolean isCancelled();
     
 }

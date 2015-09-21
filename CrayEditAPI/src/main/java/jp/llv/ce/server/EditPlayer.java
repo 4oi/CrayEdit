@@ -51,4 +51,10 @@ public interface EditPlayer extends EditCommandSender, RegionOwner {
     
     Point3d getLocation();
     
+    boolean isSneaking();
+    
+    EditItem getItemInMainhand();
+    
+    EditItem getItemInOffhand();
+    
 }

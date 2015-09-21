@@ -35,8 +35,6 @@ public interface IDTable {
     
     EditMaterial getByLegacyID(short legacyID);
     
-    void register(EditMaterial material);
-    
     enum VanillaMaterial implements EditMaterial {
 
         AIR((short) 0) {

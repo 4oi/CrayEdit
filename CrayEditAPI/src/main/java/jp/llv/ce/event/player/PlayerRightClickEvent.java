@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Toyblocks.
+ * Copyright 2015 toyblocks.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,12 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.server;
+package jp.llv.ce.event.player;
+
+import jp.llv.ce.event.EditEvent;
+import jp.llv.ce.server.EditPlayer;
 
 /**
  *
- * @author Toyblocks
+ * @author toyblocks
  */
-public interface EditRegionHolder {
+@EditEvent
+public class PlayerRightClickEvent extends PlayerClickEvent {
 
+    public PlayerRightClickEvent(EditPlayer player) {
+        super(player);
+    }
+    
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Toyblocks.
+ * Copyright 2015 toyblocks.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,18 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jp.llv.ce.server;
+package jp.llv.ce.event.tool;
 
-import jp.llv.ce.region.Point;
+import jp.llv.ce.event.EditEvent;
+import jp.llv.ce.event.registry.EnabledEvent;
+import jp.llv.ce.tool.Tool;
 
 /**
  *
- * @author Toyblocks
+ * @author toyblocks
  */
-public interface EditBlock {
-    
-    EditItemData getData();
-    
-    Point getLocation();
+@EditEvent
+public class ToolEnabledEvent extends EnabledEvent<Tool> {
+
+    public ToolEnabledEvent(Tool enabled) {
+        super(enabled);
+    }
     
 }

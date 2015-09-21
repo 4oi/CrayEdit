@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Set;
 import jp.llv.ce.region.relative.RelativePoint;
 import jp.llv.ce.region.relative.RelativeRegion;
-import jp.llv.ce.server.EditBlockData;
+import jp.llv.ce.server.EditItemData;
 
 /**
  * クリップボード
@@ -36,10 +36,10 @@ import jp.llv.ce.server.EditBlockData;
  */
 public final class Clipboard extends RelativeRegion implements Serializable {
 
-    private Map<RelativePoint, EditBlockData> blocks;
+    private Map<RelativePoint, EditItemData> blocks;
     
     @Deprecated
-    public Clipboard(Map<RelativePoint, EditBlockData> blocks) {
+    public Clipboard(Map<RelativePoint, EditItemData> blocks) {
         if (blocks == null) {
             throw new NullPointerException();
         }
