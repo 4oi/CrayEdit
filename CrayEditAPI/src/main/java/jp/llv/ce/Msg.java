@@ -23,6 +23,7 @@
  */
 package jp.llv.ce;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import jp.llv.ce.server.EditCommandSender;
@@ -51,21 +52,11 @@ public final class Msg {
     
     /**
      * Returns this message as {@link java.lang.String}.
-     *
-     * @return
+     * @return message as {@link String}
      */
     @Override
     public String toString() {
         return this.message;
-    }
-
-    /**
-     * init message
-     *
-     * @param config message configuration
-     */
-    protected static void init(Map<String, String> config) {
-        messages = new ConcurrentHashMap<>(config);
     }
 
     /**
@@ -77,8 +68,7 @@ public final class Msg {
      * @param message a message to replace
      * @param replace replace arguments
      * @return replaced message
-     * @deprecated use {@link #setDefault(java.lang.String, java.lang.String)}
-     * and {@link #fromKey(java.lang.String, java.lang.Object...).
+     * @deprecated use {@link #setDefault(java.lang.String, java.lang.String)} and {@link #fromKey(java.lang.String, java.lang.Object...)
      */
     @Deprecated
     public static Msg of(String message, Object... replace) {
@@ -107,7 +97,20 @@ public final class Msg {
         return Msg.of(mest, replace);
     }
 
-    public static void set(String key, String message) {
+    /**
+     * init message
+     *
+     * @param config message configuration
+     */
+    protected static void init(Map<String, String> config) {
+        messages = new ConcurrentHashMap<>(config);
+    }
+    
+    protected static void init() {
+        init(Collections.EMPTY_MAP);
+    }
+
+    protected static void set(String key, String message) {
         messages.put(key, key);
     }
 
