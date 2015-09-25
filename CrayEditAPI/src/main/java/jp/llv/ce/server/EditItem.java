@@ -29,9 +29,13 @@ package jp.llv.ce.server;
  */
 public interface EditItem {
     
-    EditItemData getData();
+    EditMaterialData getData();
     
     int getAmount();
+    
+    void setMaterial(EditMaterial material);
+    
+    void setData(short meta);
     
     void setAmount(int amount);
     

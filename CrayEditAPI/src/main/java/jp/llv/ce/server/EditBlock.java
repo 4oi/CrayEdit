@@ -31,7 +31,11 @@ import jp.llv.ce.region.Point;
  */
 public interface EditBlock {
     
-    EditItemData getData();
+    EditMaterialData getData();
+    
+    void setMaterial(EditMaterial material);
+    
+    void setData(short meta);
     
     Point getLocation();
     
