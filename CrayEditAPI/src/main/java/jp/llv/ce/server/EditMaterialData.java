@@ -29,9 +29,7 @@ import java.util.Map;
  *
  * @author Toyblocks
  */
-public interface EditItemData {
-    
-    String getID();
+public interface EditMaterialData {
     
     EditMaterial getMaterial();
     
