@@ -33,7 +33,7 @@ public interface EditMaterialData {
     
     EditMaterial getMaterial();
     
-    byte getData();
+    short getData();
     
     Map getTag();
     
