@@ -34,7 +34,7 @@ import jp.llv.ce.server.EditServer;
  */
 public interface CrayAPI {
 
-    static final String API_VERSION = "1.0";
+    static final String API_VERSION = "1.1-SNAPSHOT";
 
     default String getAPIVersion() {
         return API_VERSION;
