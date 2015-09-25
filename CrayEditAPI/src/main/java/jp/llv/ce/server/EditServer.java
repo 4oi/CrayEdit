@@ -47,6 +47,14 @@ public interface EditServer {
     
     EditCommandSender getConsole();
     
+    EditMaterial getMaterial(String id);
+    
+    EditMaterialData getMaterialData(EditMaterial material, short meta);
+    
+    default EditMaterialData getMaterialData(String id, short meta) {
+        return this.getMaterialData(this.getMaterial(id), meta);
+    }
+    
     String getAPIVersion();
     
     String getVersion();
